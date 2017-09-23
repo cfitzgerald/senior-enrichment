@@ -6,12 +6,12 @@ const Student = db.define('student', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  // image: {
-  //   type: Sequelize.STRING,
-  //   defaultValue: function () {
-  //     return getRandomImage();
-  //   }
-  // }
+  email: {
+    type: Sequelize.STRING,
+    validate: {
+      isEmail: true
+    }
+  }
 });
 
 module.exports = Student;

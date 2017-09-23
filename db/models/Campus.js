@@ -8,9 +8,9 @@ const Campus = db.define('campus', {
   },
   // image: {
   //   type: Sequelize.STRING,
-  //   defaultValue: function () {
-  //     return getRandomImage();
-  //   }
+  //   // defaultValue: function () {
+  //   //   return getRandomImage();
+  //   // }
   // }
 });
 
