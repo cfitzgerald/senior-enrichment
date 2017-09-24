@@ -19,7 +19,7 @@ a, .btn {
 
 .page-header {
   border-bottom: 5px solid #eee;
-  padding-bottom: 0;
+  padding-bottom: 5px;
   text-align: right;
 }
 

@@ -17,7 +17,7 @@ export default class Root extends Component {
     return (
       <div className="container">
         <div className="page-header">
-          <h1>Margaret Hamilton Interplanetary Academy of JavaScript</h1>
+          <h1><small>Margaret Hamilton</small> Interplanetary Academy of JavaScript</h1>
         </div>
         <div className="row">
           <CampusList />

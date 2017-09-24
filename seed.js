@@ -37,19 +37,19 @@ const students = [
 const seed = () => {
   Promise.all(campuses.map(campus => {
     Campus.create(campus);
-  })
+  }))
   .then(() => {
     Promise.all(students.map(student => {
       Student.create(student);
-    })
-  })
+    }));
+  });
 };
 
 const main = () => {
   console.log('Syncing db...');
   db.sync({ force: true })
     .then(() => {
-      console.log('Seeding databse...');
+      console.log('Seeding database...');
       return seed();
     })
     .catch(err => {
