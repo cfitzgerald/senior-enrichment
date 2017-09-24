@@ -8,10 +8,6 @@ const path = require('path');
 const app = express();
 module.exports = app;
 
-// db
-const db = require('../db');
-db.sync().then(() => console.log('Database is synced'));
-
 // logging middleware
 app.use(morgan('dev'));
 
@@ -43,6 +39,15 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
 
-// server
+// db and server
+const db = require('../db');
+const seed = require('../db/seed.js');
+
 const port = process.env.PORT || 3001;
-app.listen(port, () => console.log(`SEP listening on port ${ port }...`));
+
+db.sync({ force: true })
+  .then(seed)
+  .then(() => {
+    console.log('Database is synced');
+    app.listen(port, () => console.log(`SEP listening on port ${ port }...`));
+  });

@@ -1,6 +1,6 @@
-const db = require('./db');
-const Campus = require('./db/models/Campus');
-const Student = require('./db/models/Student');
+// const db = require('./db');
+const Campus = require('./models/Campus');
+const Student = require('./models/Student');
 
 // You know the universe is a little bit like the human hand.
 // For example, you have Grauman's Center right here,
@@ -45,21 +45,4 @@ const seed = () => {
   });
 };
 
-const main = () => {
-  console.log('Syncing db...');
-  db.sync({ force: true })
-    .then(() => {
-      console.log('Seeding database...');
-      return seed();
-    })
-    .catch(err => {
-      console.log('Error while seeding!');
-      console.log(err.stack);
-    })
-    .then(() => {
-      db.close();
-      return null;
-    });
-};
-
-main();
+module.exports = seed;
