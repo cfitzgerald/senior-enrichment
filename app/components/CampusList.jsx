@@ -9,28 +9,29 @@ function CampusList (props) {
   const { campuses, students } = props;
 
   return (
-    <ul>
-      {
-        campuses.map(campus => {
-          return (
-            <li key={ campus.id }>
-              <NavLink to={ `/campuses/${ campus.id }` } activeClassName="active">
-                <span># { campus.name }</span>
-                <span className="badge">{ students.filter(student => student.campusId === campus.id).length }</span>
-              </NavLink>
-            </li>
-          );
-        })
-      }
+    <div className="col-sm-6">
+      <ul>
+        {
+          campuses.map(campus => {
+            return (
+              <li key={ campus.id }>
+                <NavLink to={ `/campuses/${ campus.id }` } activeClassName="active">
+                  <span>{ campus.name }</span>
+                  <span className="badge">{ students.filter(student => student.campusId === campus.id).length }</span>
+                </NavLink>
+              </li>
+            );
+          })
+        }
 
-      <li>
-        <NavLink to="/new-campus">Create a campus...</NavLink>
-      </li>
-    </ul>
+        <li>
+          <NavLink to="/new-campus">Create a campus...</NavLink>
+        </li>
+      </ul>
+    </div>
   );
 }
 
-/** Write your `connect` component below! **/
 const mapStateToProps = (state) => {
   return {
     campuses: state.campuses,
@@ -39,4 +40,5 @@ const mapStateToProps = (state) => {
 };
 
 const CampusListContainer = connect(mapStateToProps)(CampusList);
-export default withRouter(CampusListContainer);
+// export default withRouter(CampusListContainer);
+export default CampusListContainer;

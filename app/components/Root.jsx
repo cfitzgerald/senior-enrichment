@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import CampusList from './CampusList';
+import StudentList from './StudentList';
 import store from '../store';
 
 export default class Root extends Component {
@@ -14,8 +15,14 @@ export default class Root extends Component {
 
   render () {
     return (
-      <div>
-        <h1>Hello World!</h1>
+      <div className="container">
+        <div className="page-header">
+          <h1>Margaret Hamilton Interplanetary Academy of JavaScript</h1>
+        </div>
+        <div className="row">
+          <CampusList />
+          <StudentList />
+        </div>
       </div>
     );
   }

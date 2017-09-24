@@ -35,13 +35,14 @@ const students = [
 ];
 
 const seed = () => {
-  Promise.all(campuses.map(campus =>
-    Campus.create(campus))
-  )
-  .then(() =>
-  Promise.all(students.map(student =>
-    Student.create(student))
-  ))
+  Promise.all(campuses.map(campus => {
+    Campus.create(campus);
+  })
+  .then(() => {
+    Promise.all(students.map(student => {
+      Student.create(student);
+    })
+  })
 };
 
 const main = () => {
@@ -55,10 +56,10 @@ const main = () => {
       console.log('Error while seeding!');
       console.log(err.stack);
     })
-    // .then(() => {
-    //   db.close();
-    //   return null;
-    // });
+    .then(() => {
+      db.close();
+      return null;
+    });
 };
 
 main();
