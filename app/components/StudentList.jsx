@@ -10,24 +10,32 @@ function StudentList (props) {
 
   return (
     <div className="col-sm-6">
-      <ul>
-        {
-          students.map(student => {
-            return (
-              <li key={ student.id }>
-                <NavLink to={ `/students/${ student.id }` } activeClassName="active">
-                  <span>{ student.name }</span>
-                  <span>{ student.email }</span>
-                </NavLink>
-              </li>
-            );
-          })
-        }
+      <div className="panel panel-default">
+        <div className="panel-heading">Students</div>
 
-        <li>
-          <NavLink to="/new-student">Add a student...</NavLink>
-        </li>
-      </ul>
+        <div className="panel-body">
+
+          <ul>
+            {
+              students.map(student => {
+                return (
+                  <li key={ student.id }>
+                    <NavLink to={ `/students/${ student.id }` } activeClassName="active">
+                      <span>{ student.name }</span>
+                    </NavLink>
+                  </li>
+                );
+              })
+            }
+
+            <li>
+              <NavLink to="/new-student">Add a student...</NavLink>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
     </div>
   );
 }

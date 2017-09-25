@@ -10,24 +10,33 @@ function CampusList (props) {
 
   return (
     <div className="col-sm-6">
-      <ul>
-        {
-          campuses.map(campus => {
-            return (
-              <li key={ campus.id }>
-                <NavLink to={ `/campuses/${ campus.id }` } activeClassName="active">
-                  <span>{ campus.name }</span>
-                  <span className="badge">{ students.filter(student => student.campusId === campus.id).length }</span>
-                </NavLink>
-              </li>
-            );
-          })
-        }
+      <div className="panel panel-default">
+        <div className="panel-heading">Campuses</div>
 
-        <li>
-          <NavLink to="/new-campus">Create a campus...</NavLink>
-        </li>
-      </ul>
+        <div className="panel-body">
+
+          <ul>
+            {
+              campuses.map(campus => {
+                return (
+                  <li key={ campus.id }>
+                    <NavLink to={ `/campuses/${ campus.id }` } activeClassName="active">
+                      <span>{ campus.name } </span>
+                      <span className="badge">{ students.filter(student => student.campusId === campus.id).length } Students</span>
+                    </NavLink>
+                  </li>
+                );
+              })
+            }
+
+            <li>
+              <NavLink to="/new-campus">Create a campus...</NavLink>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
     </div>
   );
 }

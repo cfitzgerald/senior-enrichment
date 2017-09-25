@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import CampusList from './CampusList';
 import StudentList from './StudentList';
-import store from '../store';
+import store, { fetchCampuses, fetchStudents } from '../store';
 
 export default class Root extends Component {
 
-  // componentDidMount () {
-  //   const messagesThunk = fetchMessages();
-  //   const channelsThunk = fetchChannels();
-  //   store.dispatch(messagesThunk);
-  //   store.dispatch(channelsThunk);
-  // }
+  componentDidMount () {
+    const campusesThunk = fetchCampuses();
+    const studentsThunk = fetchStudents();
+    store.dispatch(campusesThunk);
+    store.dispatch(studentsThunk);
+  }
 
   render () {
     return (

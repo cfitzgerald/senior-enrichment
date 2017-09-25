@@ -48,6 +48,6 @@ const port = process.env.PORT || 3001;
 db.sync({ force: true })
   .then(seed)
   .then(() => {
-    console.log('Database is synced');
+    console.log('Database is synced!');
     app.listen(port, () => console.log(`SEP listening on port ${ port }...`));
   });
