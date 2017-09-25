@@ -16,6 +16,10 @@ export default function Navbar () {
         <ul className="navbar-nav mr-auto">
 
           <li className="nav-item">
+            <NavLink className="nav-link" to="/" activeClassName="active">Home</NavLink>
+          </li>
+
+          <li className="nav-item">
             <NavLink className="nav-link" to="/campuses" activeClassName="active">Campuses</NavLink>
           </li>
 

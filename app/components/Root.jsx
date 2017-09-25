@@ -26,6 +26,7 @@ export default class Root extends Component {
 
         <div className="row">
           <Switch>
+            <Route exact path="/" />
             <Route exact path="/campuses" component={ CampusList } />
             <Route exact path="/students" component={ StudentList } />
           </Switch>
