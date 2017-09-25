@@ -8,7 +8,7 @@ h1, h2 {
   font-weight: 700;
 }
 
-a, .btn {
+a, .btn, nav {
   font-family: Roboto, sans-serif;
   font-weight: 400;
 }

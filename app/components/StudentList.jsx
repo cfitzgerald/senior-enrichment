@@ -10,10 +10,11 @@ function StudentList (props) {
 
   return (
     <div className="col-sm-6">
-      <div className="panel panel-default">
-        <div className="panel-heading">Students</div>
+      <br />
+      <div className="card">
+        <div className="card-header">Current Students</div>
 
-        <div className="panel-body">
+        <div className="card-block">
 
           <ul className="list-group">
             {
@@ -27,10 +28,10 @@ function StudentList (props) {
                 );
               })
             }
-            <hr />
-            <li className="list-group-item">
-              <NavLink to="/new-student">Add a student...</NavLink>
-            </li>
+
+            <div className="card-footer text-center">
+              <NavLink to="/new-student" className="btn btn-primary">Add Student</NavLink>
+            </div>
           </ul>
 
         </div>
@@ -48,5 +49,5 @@ const mapStateToProps = (state) => {
 };
 
 const StudentListContainer = connect(mapStateToProps)(StudentList);
-// export default withRouter(StudentListContainer);
-export default StudentListContainer;
+export default withRouter(StudentListContainer);
+// export default StudentListContainer;

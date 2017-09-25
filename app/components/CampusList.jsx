@@ -10,10 +10,11 @@ function CampusList (props) {
 
   return (
     <div className="col-sm-6">
-      <div className="panel panel-default">
-        <div className="panel-heading">Campuses</div>
+      <br />
+      <div className="card">
+        <div className="card-header">Current Campuses</div>
 
-        <div className="panel-body">
+        <div className="card-block">
 
           <ul className="list-group">
             {
@@ -28,10 +29,10 @@ function CampusList (props) {
                 );
               })
             }
-            <hr />
-            <li className="list-group-item">
-              <NavLink to="/new-campus">Create a campus...</NavLink>
-            </li>
+
+            <div className="card-footer text-center">
+              <NavLink to="/new-campus" className="btn btn-primary">Add Campus</NavLink>
+            </div>
           </ul>
 
         </div>
@@ -49,5 +50,5 @@ const mapStateToProps = (state) => {
 };
 
 const CampusListContainer = connect(mapStateToProps)(CampusList);
-// export default withRouter(CampusListContainer);
-export default CampusListContainer;
+export default withRouter(CampusListContainer);
+// export default CampusListContainer;
