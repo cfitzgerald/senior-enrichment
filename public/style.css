@@ -51,6 +51,10 @@ ul.list-group {
   color: #f0ad4e;
 }
 
+.badge {
+  color: #000;
+}
+
 .label {
   font-weight: 300;
 }

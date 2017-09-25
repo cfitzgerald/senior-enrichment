@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'; // component currently unused
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
@@ -6,7 +6,7 @@ import store from '../store';
 
 function StudentList (props) {
 
-  const { campuses, students } = props;
+  const { campuses, students } = props; // campuses currently unused
 
   return (
     <div className="col-sm-6">
