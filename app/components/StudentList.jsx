@@ -15,11 +15,11 @@ function StudentList (props) {
 
         <div className="panel-body">
 
-          <ul>
+          <ul className="list-group">
             {
               students.map(student => {
                 return (
-                  <li key={ student.id }>
+                  <li key={ student.id } className="list-group-item">
                     <NavLink to={ `/students/${ student.id }` } activeClassName="active">
                       <span>{ student.name }</span>
                     </NavLink>
@@ -27,8 +27,8 @@ function StudentList (props) {
                 );
               })
             }
-
-            <li>
+            <hr />
+            <li className="list-group-item">
               <NavLink to="/new-student">Add a student...</NavLink>
             </li>
           </ul>
