@@ -9,31 +9,46 @@ function CampusList (props) {
   const { campuses, students } = props;
 
   return (
-    <div className="col-sm-6">
+    <div className="col-sm-12">
       <br />
       <div className="card">
-        <div className="card-header">Current Campuses</div>
+        <h3 className="card-header text-center">Current Campuses</h3>
 
         <div className="card-block">
 
-          <ul className="list-group">
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Modify</th>
+              </tr>
+            </thead>
+            <tbody>
             {
               campuses.map(campus => {
                 return (
-                  <li key={ campus.id } className="list-group-item">
-                    <NavLink to={ `/campuses/${ campus.id }` } activeClassName="active">
-                      <span>{ campus.name } </span>
-                      <span className="badge">{ students.filter(student => student.campusId === campus.id).length } Students</span>
-                    </NavLink>
-                  </li>
+                  <tr key={ campus.id }>
+                    <th scope="row">{ campus.id }</th>
+                    <td>{ campus.name }</td>
+                    <td>
+                      <NavLink
+                        to={ `/campuses/${ campus.id }` }
+                        activeClassName="active"
+                        className="btn btn-sm btn-danger">
+                        Delete
+                      </NavLink>
+                    </td>
+                  </tr>
                 );
               })
             }
+            </tbody>
+          </table>
 
-            <div className="card-footer text-center">
-              <NavLink to="/new-campus" className="btn btn-primary">Add Campus</NavLink>
-            </div>
-          </ul>
+          <div className="card-footer text-center">
+            <NavLink to="/new-campus" className="btn btn-primary">Add Campus</NavLink>
+          </div>
 
         </div>
 

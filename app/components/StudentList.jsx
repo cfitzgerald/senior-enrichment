@@ -9,30 +9,50 @@ function StudentList (props) {
   const { campuses, students } = props; // campuses currently unused
 
   return (
-    <div className="col-sm-6">
+    <div className="col-sm-12">
       <br />
       <div className="card">
-        <div className="card-header">Current Students</div>
+        <h3 className="card-header text-center">Current Students</h3>
 
         <div className="card-block">
 
-          <ul className="list-group">
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Campus</th>
+                <th>Modify</th>
+              </tr>
+            </thead>
+            <tbody>
             {
               students.map(student => {
                 return (
-                  <li key={ student.id } className="list-group-item">
-                    <NavLink to={ `/students/${ student.id }` } activeClassName="active">
-                      <span>{ student.name }</span>
-                    </NavLink>
-                  </li>
+                  <tr key={ student.id }>
+                    <th scope="row">{ student.id }</th>
+                    <td>{ student.name }</td>
+                    <td>{ student.email }</td>
+                    <td>{ student.campusId }</td>
+                    <td>
+                      <NavLink
+                        to={ `/students/${ student.id }` }
+                        activeClassName="active"
+                        className="btn btn-sm btn-danger">
+                        Delete
+                      </NavLink>
+                    </td>
+                  </tr>
                 );
               })
             }
+            </tbody>
+          </table>
 
-            <div className="card-footer text-center">
-              <NavLink to="/new-student" className="btn btn-primary">Add Student</NavLink>
-            </div>
-          </ul>
+          <div className="card-footer text-center">
+            <NavLink to="/new-student" className="btn btn-primary">Add Student</NavLink>
+          </div>
 
         </div>
 

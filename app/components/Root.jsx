@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import CampusList from './CampusList';
-import StudentList from './StudentList';
-import Navbar from './Navbar';
 import store, { fetchCampuses, fetchStudents } from '../store';
+
+import CampusList from './CampusList';
+import Navbar from './Navbar';
+import StudentForm from './StudentForm';
+import StudentList from './StudentList';
 
 export default class Root extends Component {
 
@@ -12,7 +14,15 @@ export default class Root extends Component {
     const studentsThunk = fetchStudents();
     store.dispatch(campusesThunk);
     store.dispatch(studentsThunk);
+
+    // this.unsubscribe = store.subscribe(() => {
+    //   this.setState(store.getState());
+    // });
   }
+
+  // componentWillUnmount () {
+  //   this.unsubscribe();
+  // }
 
   render () {
     return (
@@ -20,15 +30,15 @@ export default class Root extends Component {
 
         <div className="page-header">
           <h1><small>Margaret Hamilton</small> Interplanetary Academy of JavaScript</h1>
+          <Navbar />
         </div>
-
-        <Navbar />
 
         <div className="row">
           <Switch>
-            <Route exact path="/" />
-            <Route exact path="/campuses" component={ CampusList } />
-            <Route exact path="/students" component={ StudentList } />
+            <Route path="/campuses" component={ CampusList } />
+            <Route path="/students" component={ StudentList } />
+            <Route path="/new-student" component={ StudentForm } />
+            <Redirect to="/campuses" />
           </Switch>
         </div>
 
