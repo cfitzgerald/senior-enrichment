@@ -35,9 +35,9 @@ export default class Root extends Component {
 
         <div className="row">
           <Switch>
-            <Route path="/campuses" component={ CampusList } />
-            <Route path="/students" component={ StudentList } />
-            <Route path="/new-student" component={ StudentForm } />
+            <Route exact path="/campuses" component={ CampusList } />
+            <Route exact path="/students" component={ StudentList } />
+            <Route exact path="/new-student" component={ StudentForm } />
             <Redirect to="/campuses" />
           </Switch>
         </div>

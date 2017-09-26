@@ -36,12 +36,21 @@ function StudentList (props) {
                     <td>{ student.email }</td>
                     <td>{ student.campusId }</td>
                     <td>
-                      <NavLink
-                        to={ `/students/${ student.id }` }
-                        activeClassName="active"
-                        className="btn btn-sm btn-danger">
-                        Delete
-                      </NavLink>
+                        <NavLink
+                          activeClassName="active"
+                          className="btn btn-sm btn-warning"
+                          to={ `/students/${ student.id }` }
+                        >
+                          Edit
+                        </NavLink>
+
+                        <NavLink
+                          activeClassName="active"
+                          className="btn btn-sm btn-danger"
+                          to={ `/students/${ student.id }` }
+                        >
+                          Delete
+                        </NavLink>
                     </td>
                   </tr>
                 );
