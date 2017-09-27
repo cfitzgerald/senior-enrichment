@@ -9,22 +9,22 @@ import StudentList from './StudentList';
 
 export default class Root extends Component {
 
-  componentDidMount () {
+  componentDidMount() {
     const campusesThunk = fetchCampuses();
     const studentsThunk = fetchStudents();
     store.dispatch(campusesThunk);
     store.dispatch(studentsThunk);
 
-    // this.unsubscribe = store.subscribe(() => {
-    //   this.setState(store.getState());
-    // });
+    this.unsubscribe = store.subscribe(() => {
+      this.setState(store.getState());
+    });
   }
 
-  // componentWillUnmount () {
-  //   this.unsubscribe();
-  // }
+  componentWillUnmount () {
+    this.unsubscribe();
+  }
 
-  render () {
+  render() {
     return (
       <div className="container">
 
@@ -38,6 +38,7 @@ export default class Root extends Component {
             <Route exact path="/campuses" component={ CampusList } />
             <Route exact path="/students" component={ StudentList } />
             <Route exact path="/new-student" component={ StudentForm } />
+            <Route exact path="/students/:studentId" component={ StudentForm } />
             <Redirect to="/campuses" />
           </Switch>
         </div>

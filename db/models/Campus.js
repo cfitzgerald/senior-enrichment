@@ -6,15 +6,10 @@ const Campus = db.define('campus', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  // image: {
-  //   type: Sequelize.STRING,
-  //   // defaultValue: function () {
-  //   //   return getRandomImage();
-  //   // }
-  //   // get: function () {
-  //   //   return `/api/campuses/${ this.id }/image`;
-  //   // }
-  // }
+  image: {
+    type: Sequelize.STRING,
+    defaultValue: '/images/campus.png'
+  }
 });
 
 module.exports = Campus;

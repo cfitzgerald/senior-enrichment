@@ -11,16 +11,19 @@ function CampusList (props) {
   return (
     <div className="col-sm-12">
       <br />
+      <div className="row">
 
         {
           campuses.map(campus => {
             return (
-              <div className="card" key={ campus.id }>
-                <img className="card-img-top img-circle" src="/images/graumans-center.png" alt="Card image cap"></img>
-                <div className="card-block">
-                  <h4 className="card-title">{ campus.name }</h4>
-                  <div className="card-footer text-center">
-                    <NavLink to="/new-campus" className="btn btn-sm btn-warning">Edit Campus</NavLink>
+              <div className="col-sm-6" key={ campus.id }>
+                <div className="card">
+                  <img className="card-img-top img-circle" src={ campus.image } alt="Card image cap"></img>
+                  <div className="card-block">
+                    <h4 className="card-title">{ campus.name }</h4>
+                    <div className="card-footer text-center">
+                      <NavLink to="/new-campus" className="btn btn-sm btn-outline-warning">Edit Campus</NavLink>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -29,9 +32,10 @@ function CampusList (props) {
         }
 
         <div className="card-footer text-center">
-          <NavLink to="/new-campus" className="btn btn-sm btn-primary">Add Campus</NavLink>
+          <NavLink to="/new-campus" className="btn btn-sm btn-outline-primary">Add Campus</NavLink>
         </div>
 
+      </div>
     </div>
   );
 }
