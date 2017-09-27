@@ -11,6 +11,9 @@ const Campus = db.define('campus', {
   //   // defaultValue: function () {
   //   //   return getRandomImage();
   //   // }
+  //   // get: function () {
+  //   //   return `/api/campuses/${ this.id }/image`;
+  //   // }
   // }
 });
 

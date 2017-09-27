@@ -1,8 +1,13 @@
 import axios from 'axios';
+// import constants from './constants';
 
 // ACTION TYPE(s)
 const GET_CAMPUS = 'GET_CAMPUS';
 const GET_CAMPUSES = 'GET_CAMPUSES';
+const ADD_CAMPUS = 'ADD_CAMPUS';
+const DELETE_CAMPUS = 'DELETE_CAMPUS';
+const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
+
 
 // ACTION CREATOR(s)
 export function getCampus (campus) {
@@ -12,6 +17,11 @@ export function getCampus (campus) {
 
 export function getCampuses (campuses) {
   const action = { type: GET_CAMPUSES, campuses };
+  return action;
+}
+
+export function addCampus (campus) {
+  const action = { type: ADD_CAMPUS, campus };
   return action;
 }
 
@@ -28,14 +38,26 @@ export function fetchCampuses () {
   };
 }
 
-export function postCampus (campus, history) {
+// export function postCampus (campus, history) {
+
+//   return function thunk (dispatch) {
+//     return axios.post('/api/campuses', campus)
+//       .then(res => res.data)
+//       .then(newCampus => {
+//         dispatch(getCampus(newCampus));
+//         history.push(`/campuses/${ newCampus.id }`);
+//       });
+//   };
+// }
+
+export function createCampus () {
 
   return function thunk (dispatch) {
-    return axios.post('/api/campuses', campus)
+    return axios.post('/api/campuses')
       .then(res => res.data)
-      .then(newCampus => {
-        dispatch(getCampus(newCampus));
-        history.push(`/campuses/${ newCampus.id }`);
+      .then(campus => {
+        const action = addCampus(campus);
+        dispatch(action);
       });
   };
 }
@@ -50,6 +72,9 @@ export default function reducer (state = [], action) {
 
     case GET_CAMPUSES:
       return action.campuses;
+
+    case ADD_CAMPUS:
+      return action.campus;
 
     default:
       return state;

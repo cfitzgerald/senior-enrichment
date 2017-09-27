@@ -16,7 +16,7 @@ function CampusList (props) {
           campuses.map(campus => {
             return (
               <div className="card" key={ campus.id }>
-                <img className="card-img-top" src="..." alt="Card image cap"></img>
+                <img className="card-img-top img-circle" src="/images/graumans-center.png" alt="Card image cap"></img>
                 <div className="card-block">
                   <h4 className="card-title">{ campus.name }</h4>
                   <div className="card-footer text-center">
