@@ -5,7 +5,7 @@ module.exports = api;
 
 // GET /api/students
 api.get('/', (req, res, next) => {
-  Student.findAll()
+  Student.findAll({ order: ['id'] })
     .then(students => res.json(students))
     .catch(next);
 });
