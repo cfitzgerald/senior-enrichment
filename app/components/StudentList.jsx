@@ -27,6 +27,7 @@ export default class StudentList extends Component {
   }
 
   handleClick(e, studentId) {
+    // console.log('StudentList: handleClick(e, studentId) =', studentId);
     store.dispatch(destroyStudent(studentId));
   }
 
@@ -64,19 +65,20 @@ export default class StudentList extends Component {
                       <td>{ student.campus.name }</td>
                       <td>
                           <Link
-                            className="btn btn-sm btn-warning"
+                            className="btn btn-sm btn-outline-warning"
                             id="student-edit"
                             to={ `/students/${ student.id }` }
                           >
                             Edit
                           </Link>
 
-                          <button
-                            className="btn btn-sm btn-danger"
-                            onClick={(e) => handleClick(e, student.id) }
+                          <Link
+                            className="btn btn-sm btn-outline-danger"
+                            onClick={ (e) => handleClick(e, student.id) }
+                            to={ `/students/${ student.id }` }
                           >
                             Delete
-                          </button>
+                          </Link>
                       </td>
                     </tr>
                   );

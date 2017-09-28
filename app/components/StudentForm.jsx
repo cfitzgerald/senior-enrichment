@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import store, { addStudent, createStudent } from '../store';
+import store, { addStudent, createStudent, fetchStudents } from '../store';
 
 export default class StudentForm extends Component {
 
@@ -34,6 +34,7 @@ export default class StudentForm extends Component {
       campusId: e.target.campusId.value,
     };
     store.dispatch(createStudent(newStudent));
+    store.dispatch(fetchStudents()); // or else 'name' is undefined error on StudentList
   }
 
   render() {

@@ -73,10 +73,10 @@ export function createStudent (student) {
 }
 
 export function destroyStudent (id) {
-  console.log('destroyStudent(id) =', id);
+  // console.log('store/students: destroyStudent(id) =', id);
 
   return function thunk (dispatch) {
-    return axios.delete('/api/students/', id)
+    return axios.delete(`/api/students/${ id }`)
       .then(() => { // getting a 204
         const action = deleteStudent(id);
         dispatch(action);

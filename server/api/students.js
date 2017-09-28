@@ -27,15 +27,13 @@ api.post('/', (req, res, next) => {
 });
 
 // DELETE /api/students
-api.delete('/', (req, res, next) => {
-  console.log('DELETE /api/students/ REQ.BODY =', req.body);
-  console.log('DELETE /api/students/ REQ.PARAMS =', req.params);
+api.delete('/:studentId', (req, res, next) => {
+  // console.log('DELETE /api/students REQ.PARAMS =', req.params.studentId);
 
-  const id = req.body;
-  // const id = req.params.studentId;
+  const id = req.params.studentId;
 
   Student.destroy({ where: { id } })
-    .then(() => res.status(204).end())
+    .then(() => res.sendStatus(204).end())
     .catch(next);
 });
 
