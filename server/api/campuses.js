@@ -5,14 +5,16 @@ module.exports = api;
 
 // GET /api/campuses
 api.get('/', (req, res, next) => {
-  Campus.findAll({ order: ['id'] })
+  Campus.findAll({ order: ['id'], include: [ Student ] })
     .then(campuses => res.json(campuses))
     .catch(next);
 });
 
 // GET /api/campuses/:campusId
 api.get('/:campusId', (req, res, next) => {
-  Campus.findById(req.params.campusId)
+  const id = req.params.campusId;
+
+  Campus.findById(id)
     .then(campus => res.json(campus))
     .catch(next);
 });

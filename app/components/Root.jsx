@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import store, { fetchCampuses, fetchStudents } from '../store';
 
+import CampusForm from './CampusForm';
 import CampusList from './CampusList';
 import Navbar from './Navbar';
 import StudentForm from './StudentForm';
@@ -37,7 +38,9 @@ export default class Root extends Component {
           <Switch>
             <Route exact path="/campuses" component={ CampusList } />
             <Route exact path="/students" component={ StudentList } />
+            <Route exact path="/new-campus" component={ CampusForm } />
             <Route exact path="/new-student" component={ StudentForm } />
+            <Route exact path="/campuses/:campusId" component={ CampusForm } />
             <Route exact path="/students/:studentId" component={ StudentForm } />
             <Redirect to="/campuses" />
           </Switch>

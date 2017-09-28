@@ -16,6 +16,11 @@ a, .btn, nav, form {
 img {
   height: 25%;
   width: 25%;
+  margin: 0 auto;
+}
+
+.card {
+  margin-bottom: 10px;
 }
 
 .bold {
@@ -54,6 +59,10 @@ ul.list-group {
 .btn-warning {
   background-color: #eee;
   color: #f0ad4e;
+}
+
+#student-edit {
+  margin-right: 10px;
 }
 
 .badge {

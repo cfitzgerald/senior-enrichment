@@ -24,8 +24,8 @@ export function addStudent (student) {
   return action;
 }
 
-export function deleteStudent (student) {
-  const action = { type: DELETE_STUDENT, student };
+export function deleteStudent (id) {
+  const action = { type: DELETE_STUDENT, id };
   return action;
 }
 
@@ -47,25 +47,38 @@ export function fetchStudents () {
   };
 }
 
-export function postStudent (student, history) {
+export function fetchStudentById (id) {
 
   return function thunk (dispatch) {
-    return axios.post('/api/students', student)
+    return axios.get(`/api/students/${ id }`)
       .then(res => res.data)
-      .then(newStudent => {
-        dispatch(getStudent(newStudent));
-        history.push(`/students/${ newStudent.id }`);
+      .then(student => {
+        const action = getStudent(student);
+        dispatch(action);
       });
   };
 }
 
-export function createStudent () {
+export function createStudent (student) {
 
   return function thunk (dispatch) {
-    return axios.post('/api/students')
+    return axios.post('/api/students', student)
       .then(res => res.data)
       .then(student => {
         const action = addStudent(student);
+        // const action = fetchStudents();
+        dispatch(action);
+      });
+  };
+}
+
+export function destroyStudent (id) {
+  console.log('destroyStudent(id) =', id);
+
+  return function thunk (dispatch) {
+    return axios.delete('/api/students/', id)
+      .then(() => { // getting a 204
+        const action = deleteStudent(id);
         dispatch(action);
       });
   };
@@ -83,10 +96,12 @@ export default function reducer (state = [], action) {
       return action.students;
 
     case ADD_STUDENT:
-      return action.student;
+      return [...state, action.student];
 
     case DELETE_STUDENT:
-      return action.student;
+      return state.filter(student => {
+        return student.id !== action.id;
+      });
 
     case UPDATE_STUDENT:
       return action.student;

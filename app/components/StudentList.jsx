@@ -1,82 +1,99 @@
 import React, { Component } from 'react'; // component currently unused
-import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Route, Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import store from '../store';
+import store, { fetchCampuses, fetchStudents, destroyStudent } from '../store';
 
-function StudentList (props) {
+export default class StudentList extends Component {
 
-  const { campuses, students } = props; // campuses currently unused
+  constructor() {
+    super();
+    this.state = store.getState();
+    // this.handleClick = this.handleClick.bind(this);
+  }
 
-  return (
-    <div className="col-sm-12">
-      <br />
-      <div className="card">
-        <h3 className="card-header text-center">Current Students</h3>
+  componentDidMount() {
+    const campusesThunk = fetchCampuses();
+    const studentsThunk = fetchStudents();
+    store.dispatch(campusesThunk);
+    store.dispatch(studentsThunk);
 
-        <div className="card-block">
+    this.unsubscribe = store.subscribe(() => {
+      this.setState(store.getState());
+    });
+  }
 
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Campus</th>
-                <th>Modify</th>
-              </tr>
-            </thead>
-            <tbody>
-            {
-              students.map(student => {
-                return (
-                  <tr key={ student.id }>
-                    <th scope="row">{ student.id }</th>
-                    <td>{ student.name }</td>
-                    <td>{ student.email }</td>
-                    <td>{ student.campusId }</td>
-                    <td>
-                        <NavLink
-                          activeClassName="active"
-                          className="btn btn-sm btn-warning"
-                          to={ `/students/${ student.id }` }
-                        >
-                          Edit
-                        </NavLink>
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
 
-                        <NavLink
-                          activeClassName="active"
-                          className="btn btn-sm btn-danger"
-                          to={ `/students/${ student.id }` }
-                        >
-                          Delete
-                        </NavLink>
-                    </td>
-                  </tr>
-                );
-              })
-            }
-            </tbody>
-          </table>
+  handleClick(e, studentId) {
+    store.dispatch(destroyStudent(studentId));
+  }
 
-          <div className="card-footer text-center">
-            <NavLink to="/new-student" className="btn btn-primary">Add Student</NavLink>
+  render() {
+
+    const { campuses, students } = this.state;
+    const { handleClick } = this;
+
+    return (
+      <div className="col-sm-12">
+        <br />
+        <div className="card">
+          <h3 className="card-header text-center">Current Students</h3>
+
+          <div className="card-block">
+
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Campus</th>
+                  <th>Modify</th>
+                </tr>
+              </thead>
+              <tbody>
+              {
+                students.map(student => {
+                  return (
+                    <tr key={ student.id }>
+                      <th scope="row">{ student.id }</th>
+                      <td>{ student.name }</td>
+                      <td>{ student.email }</td>
+                      <td>{ student.campus.name }</td>
+                      <td>
+                          <Link
+                            className="btn btn-sm btn-warning"
+                            id="student-edit"
+                            to={ `/students/${ student.id }` }
+                          >
+                            Edit
+                          </Link>
+
+                          <button
+                            className="btn btn-sm btn-danger"
+                            onClick={(e) => handleClick(e, student.id) }
+                          >
+                            Delete
+                          </button>
+                      </td>
+                    </tr>
+                  );
+                })
+              }
+              </tbody>
+            </table>
+
+            <div className="card-footer text-center">
+              <Link to="/new-student" className="btn btn-primary">Add Student</Link>
+            </div>
+
           </div>
 
         </div>
-
       </div>
-    </div>
-  );
+    );
+  }
+
 }
-
-const mapStateToProps = (state) => {
-  return {
-    campuses: state.campuses,
-    students: state.students
-  };
-};
-
-const StudentListContainer = connect(mapStateToProps)(StudentList);
-export default withRouter(StudentListContainer);
-// export default StudentListContainer;

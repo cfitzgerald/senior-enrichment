@@ -25,6 +25,16 @@ export function addCampus (campus) {
   return action;
 }
 
+export function deleteCampus (id) {
+  const action = { type: DELETE_CAMPUS, id };
+  return action;
+}
+
+export function updateCampus (campus) {
+  const action = { type: UPDATE_CAMPUS, campus };
+  return action;
+}
+
 // THUNK CREATOR(s)
 export function fetchCampuses () {
 
@@ -38,25 +48,36 @@ export function fetchCampuses () {
   };
 }
 
-// export function postCampus (campus, history) {
-
-//   return function thunk (dispatch) {
-//     return axios.post('/api/campuses', campus)
-//       .then(res => res.data)
-//       .then(newCampus => {
-//         dispatch(getCampus(newCampus));
-//         history.push(`/campuses/${ newCampus.id }`);
-//       });
-//   };
-// }
-
-export function createCampus () {
+export function fetchCampusById (id) {
 
   return function thunk (dispatch) {
-    return axios.post('/api/campuses')
+    return axios.get(`/api/campuses/${ id }`)
+      .then(res => res.data)
+      .then(campus => {
+        const action = getCampus(campus);
+        dispatch(action);
+      });
+  };
+}
+
+export function createCampus (campus) {
+
+  return function thunk (dispatch) {
+    return axios.post('/api/campuses', campus)
       .then(res => res.data)
       .then(campus => {
         const action = addCampus(campus);
+        dispatch(action);
+      });
+  };
+}
+
+export function destroyCampus (id) {
+
+  return function thunk (dispatch) {
+    return axios.delete(`/api/campuses/${ id }`)
+      .then(() => {
+        const action = deleteCampus(campus);
         dispatch(action);
       });
   };
@@ -74,6 +95,14 @@ export default function reducer (state = [], action) {
       return action.campuses;
 
     case ADD_CAMPUS:
+      return [...state, action.campus];
+
+    case DELETE_CAMPUS:
+      return state.filter(campus => {
+        return campus.id !== action.id;
+      });
+
+    case UPDATE_CAMPUS:
       return action.campus;
 
     default:

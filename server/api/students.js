@@ -5,14 +5,16 @@ module.exports = api;
 
 // GET /api/students
 api.get('/', (req, res, next) => {
-  Student.findAll({ order: ['id'] })
+  Student.findAll({ order: ['id'], include: [ Campus ] })
     .then(students => res.json(students))
     .catch(next);
 });
 
 // GET /api/students/:studentId
 api.get('/:studentId', (req, res, next) => {
-  Student.findById(req.params.studentId)
+  const id = req.params.studentId;
+
+  Student.findById(id)
     .then(student => res.json(student))
     .catch(next);
 });
@@ -24,20 +26,24 @@ api.post('/', (req, res, next) => {
     .catch(next);
 });
 
+// DELETE /api/students
+api.delete('/', (req, res, next) => {
+  console.log('DELETE /api/students/ REQ.BODY =', req.body);
+  console.log('DELETE /api/students/ REQ.PARAMS =', req.params);
+
+  const id = req.body;
+  // const id = req.params.studentId;
+
+  Student.destroy({ where: { id } })
+    .then(() => res.status(204).end())
+    .catch(next);
+});
+
 // PUT /api/students/:studentId
 api.put('/:studentId', (req, res, next) => {
   const id = req.params.studentId;
 
   Student.findById(id)
     .then(student => student.update(req.body))
-    .catch(next);
-});
-
-// DELETE /api/students/:studentId
-api.delete('/:studentId', (req, res, next) => {
-  const id = req.params.studentId;
-
-  Student.destroy({ where: { id } })
-    .then(() => res.status(204).end())
     .catch(next);
 });

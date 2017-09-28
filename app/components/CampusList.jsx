@@ -17,10 +17,11 @@ function CampusList (props) {
           campuses.map(campus => {
             return (
               <div className="col-sm-6" key={ campus.id }>
-                <div className="card">
+                <div className="card text-center">
                   <img className="card-img-top img-circle" src={ campus.image } alt="Card image cap"></img>
                   <div className="card-block">
                     <h4 className="card-title">{ campus.name }</h4>
+                    <p className="card-text"><strong>{ students.filter(student => student.campusId === campus.id).length }</strong> Students</p>
                     <div className="card-footer text-center">
                       <NavLink to="/new-campus" className="btn btn-sm btn-outline-warning">Edit Campus</NavLink>
                     </div>

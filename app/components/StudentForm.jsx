@@ -28,10 +28,12 @@ export default class StudentForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const campusId = e.target.campusId.value;
-    dispatch(createStudent({ name }));
+    const newStudent = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      campusId: e.target.campusId.value,
+    };
+    store.dispatch(createStudent(newStudent));
   }
 
   render() {
@@ -58,8 +60,8 @@ export default class StudentForm extends Component {
                 <input
                   className="form-control"
                   onChange={ handleChange }
-                  name="studentName"
-                  placeholder="Enter the NAME of the new Student..."
+                  name="name"
+                  placeholder="..."
                   type="text"
                   value={ name }
                 />
@@ -69,9 +71,9 @@ export default class StudentForm extends Component {
                 <label htmlFor="name">Email</label>
                 <input
                   className="form-control"
-                  name="studentEmail"
+                  name="email"
                   onChange={ handleChange }
-                  placeholder="Enter the EMAIL of the new Student..."
+                  placeholder="..."
                   type="text"
                   value={ email }
                 />
@@ -110,27 +112,3 @@ export default class StudentForm extends Component {
 
   }
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//     campuses: state.campuses,
-//     students: state.students
-//   };
-// };
-
-// const mapDispatchToProps = function (dispatch, ownProps) {
-//   return {
-//     handleChange (e) {
-//       dispatch(addStudent(e.target.value));
-//     },
-//     handleSubmit (e) {
-//       e.preventDefault();
-//       const name = e.target.name.value;
-//       const email = e.target.email.value;
-//       const campusId = e.target.campusId.value;
-//       dispatch(createStudent({ name }, ownProps.history ));
-//     }
-//   };
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(StudentForm);
