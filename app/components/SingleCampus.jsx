@@ -1,37 +1,87 @@
 import React, { Component } from 'react'; // component currently unused
-import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 import store from '../store';
 
-function SingleCampus (props) {
+export default class SingleCampus extends Component {
 
-  const { campuses, students } = props;
+  constructor() {
+    super();
+    this.state = store.getState();
+    // this.handleRemove = this.handleRemove.bind(this);
+  }
 
-  return (
-    <div className="col-sm-6">
-      <br />
-      <div className="card">
-        <div className="card-header">Current Campuses</div>
+  componentDidMount() {
+    this.unsubscribe = store.subscribe(() => {
+      this.setState(store.getState());
+    });
+  }
 
-        <div className="card-block">
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
 
-          <h4 className="card-title">{ campus.name }</h4>
+  // handleClick(e, studentId) {
+  //   e.preventDefault();
+  //   store.dispatch(destroyStudent(studentId));
+  // }
+
+  render() {
+
+    const { campuses, students } = this.state;
+    const campusId = Number(this.props.match.params.campusId);
+
+    const campus = campuses.filter(campus => {
+      return campus.id === campusId;
+    })[0];
+
+    const campusStudents = students.filter(student => {
+      return student.campusId === campusId;
+    });
+
+    return (
+      <div className="col-sm-12">
+        <br />
+        <div className="card">
+          <div className="card-header text-center"><h3>{ campus && campus.name }</h3></div>
+
+          <div className="card-block">
+
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Campus</th>
+                  <th>Modify</th>
+                </tr>
+              </thead>
+              <tbody>
+              {
+                campusStudents && campusStudents.map(student => {
+                  return (
+                    <tr key={ student.id }>
+                      <th scope="row">{ student.id }</th>
+                      <td>{ student.name }</td>
+                      <td>{ student.email }</td>
+                      <td>{ student.campus.name }</td>
+                      <td>
+                          <button
+                            className="btn btn-sm btn-danger"
+                            onClick={ (e) => handleRemove(e, student.id) }>Delete</button>
+                      </td>
+                    </tr>
+                  );
+                })
+              }
+              </tbody>
+            </table>
+
+          </div>
 
         </div>
-
       </div>
-    </div>
-  );
+    );
+  }
+
 }
-
-const mapStateToProps = (state) => {
-  return {
-    campuses: state.campuses,
-    students: state.students
-  };
-};
-
-const SingleCampusContainer = connect(mapStateToProps)(SingleCampus);
-export default withRouter(SingleCampusContainer);
-// export default CampusListContainer;

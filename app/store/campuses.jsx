@@ -73,11 +73,12 @@ export function createCampus (campus) {
 }
 
 export function destroyCampus (id) {
+  // console.log('store/campuses: destroyCampus(id) =', id);
 
   return function thunk (dispatch) {
     return axios.delete(`/api/campuses/${ id }`)
       .then(() => {
-        const action = deleteCampus(campus);
+        const action = deleteCampus(id);
         dispatch(action);
       });
   };

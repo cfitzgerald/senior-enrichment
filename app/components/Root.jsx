@@ -4,28 +4,37 @@ import store, { fetchCampuses, fetchStudents } from '../store';
 
 import CampusForm from './CampusForm';
 import CampusList from './CampusList';
+import SingleCampus from './SingleCampus';
 import Navbar from './Navbar';
 import StudentForm from './StudentForm';
 import StudentList from './StudentList';
 
 export default class Root extends Component {
 
-  componentDidMount() {
-    const campusesThunk = fetchCampuses();
-    const studentsThunk = fetchStudents();
-    store.dispatch(campusesThunk);
-    store.dispatch(studentsThunk);
+  // constructor() {
+  //   super();
+  //   this.state = store.getState();
+  // }
 
-    this.unsubscribe = store.subscribe(() => {
-      this.setState(store.getState());
-    });
-  }
+  // componentDidMount() {
+  //   const campusesThunk = fetchCampuses();
+  //   const studentsThunk = fetchStudents();
+  //   store.dispatch(campusesThunk);
+  //   store.dispatch(studentsThunk);
 
-  componentWillUnmount () {
-    this.unsubscribe();
-  }
+  //   this.unsubscribe = store.subscribe(() => {
+  //     this.setState(store.getState());
+  //   });
+  // }
+
+  // componentWillUnmount () {
+  //   this.unsubscribe();
+  // }
 
   render() {
+
+    // const { campuses, students } = this.state;
+
     return (
       <div className="container">
 
@@ -40,7 +49,7 @@ export default class Root extends Component {
             <Route exact path="/students" component={ StudentList } />
             <Route exact path="/new-campus" component={ CampusForm } />
             <Route exact path="/new-student" component={ StudentForm } />
-            <Route exact path="/campuses/:campusId" component={ CampusForm } />
+            <Route exact path="/campuses/:campusId/view" component={ SingleCampus } />
             <Route exact path="/students/:studentId" component={ StudentForm } />
             <Redirect to="/campuses" />
           </Switch>

@@ -34,7 +34,7 @@ export default class StudentForm extends Component {
       campusId: e.target.campusId.value,
     };
     store.dispatch(createStudent(newStudent));
-    store.dispatch(fetchStudents()); // or else 'name' is undefined error on StudentList
+    // store.dispatch(fetchStudents());
   }
 
   render() {
@@ -100,7 +100,7 @@ export default class StudentForm extends Component {
               </div>
 
               <div className="card-footer text-center">
-                <button className="btn btn-outline-primary" type="submit">Save Student</button>
+                <button className="btn btn-primary" type="submit">Save Student</button>
               </div>
 
             </form>

@@ -7,6 +7,9 @@ const GET_STUDENTS = 'GET_STUDENTS';
 const ADD_STUDENT = 'ADD_STUDENT';
 const DELETE_STUDENT = 'DELETE_STUDENT';
 const UPDATE_STUDENT = 'UPDATE_STUDENT';
+// const INPUT_STUDENT_NAME = 'INPUT_STUDENT_NAME';
+// const INPUT_STUDENT_EMAIL = 'INPUT_STUDENT_EMAIL';
+// const INPUT_STUDENT_CAMPUS = 'INPUT_STUDENT_CAMPUS';
 
 // ACTION CREATOR(s)
 export function getStudent (student) {
@@ -33,6 +36,21 @@ export function updateStudent (student) {
   const action = { type: UPDATE_STUDENT, student };
   return action;
 }
+
+// export function inputStudentName (studentName) {
+//   const action = { type: INPUT_STUDENT_NAME, studentName };
+//   return action;
+// }
+
+// export function inputStudentEmail (studentEmail) {
+//   const action = { type: INPUT_STUDENT_EMAIL, studentEmail };
+//   return action;
+// }
+
+// export function inputStudentCampus (studentCampus) {
+//   const action = { type: INPUT_STUDENT_CAMPUS, studentCampus };
+//   return action;
+// }
 
 // THUNK CREATOR(s)
 export function fetchStudents () {
@@ -66,7 +84,6 @@ export function createStudent (student) {
       .then(res => res.data)
       .then(student => {
         const action = addStudent(student);
-        // const action = fetchStudents();
         dispatch(action);
       });
   };

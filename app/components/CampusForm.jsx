@@ -64,7 +64,7 @@ export default class StudentForm extends Component {
               </div>
 
               <div className="card-footer text-center">
-                <button className="btn btn-outline-primary" type="submit">Save Campus</button>
+                <button className="btn btn-primary" type="submit">Save Campus</button>
               </div>
 
             </form>

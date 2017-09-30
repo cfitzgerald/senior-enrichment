@@ -1,6 +1,5 @@
 import React, { Component } from 'react'; // component currently unused
-import { Route, Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 import store, { fetchCampuses, fetchStudents, destroyStudent } from '../store';
 
 export default class StudentList extends Component {
@@ -8,7 +7,7 @@ export default class StudentList extends Component {
   constructor() {
     super();
     this.state = store.getState();
-    // this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +29,7 @@ export default class StudentList extends Component {
     e.preventDefault(); // hacky workaround(?) for delete button vs. link
     // console.log('StudentList: handleClick(e, studentId) =', studentId);
     store.dispatch(destroyStudent(studentId));
+    // store.dispatch(fetchStudents());
   }
 
   render() {
@@ -57,7 +57,7 @@ export default class StudentList extends Component {
               </thead>
               <tbody>
               {
-                students.map(student => {
+                students && students.map(student => {
                   return (
                     <tr key={ student.id }>
                       <th scope="row">{ student.id }</th>
@@ -66,20 +66,12 @@ export default class StudentList extends Component {
                       <td>{ student.campus.name }</td>
                       <td>
                           <Link
-                            className="btn btn-sm btn-outline-warning"
-                            id="student-edit"
-                            to={ `/students/${ student.id }` }
-                          >
-                            Edit
-                          </Link>
+                            className="btn btn-sm btn-outline-warning space-right"
+                            to={ `/students/${ student.id }/edit` }>Edit</Link>
 
-                          <Link
-                            className="btn btn-sm btn-outline-danger"
-                            onClick={ (e) => handleClick(e, student.id) }
-                            to={ `/students/${ student.id }` }
-                          >
-                            Delete
-                          </Link>
+                          <button
+                            className="btn btn-sm btn-danger"
+                            onClick={ (e) => handleClick(e, student.id) }>Delete</button>
                       </td>
                     </tr>
                   );
@@ -87,10 +79,6 @@ export default class StudentList extends Component {
               }
               </tbody>
             </table>
-
-            <div className="card-footer text-center">
-              <Link to="/new-student" className="btn btn-primary">Add Student</Link>
-            </div>
 
           </div>
 

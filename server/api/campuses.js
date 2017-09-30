@@ -10,8 +10,8 @@ api.get('/', (req, res, next) => {
     .catch(next);
 });
 
-// GET /api/campuses/:campusId
-api.get('/:campusId', (req, res, next) => {
+// GET /api/campuses/:campusId/view
+api.get('/:campusId/view', (req, res, next) => {
   const id = req.params.campusId;
 
   Campus.findById(id)
@@ -26,8 +26,8 @@ api.post('/', (req, res, next) => {
     .catch(next);
 });
 
-// PUT /api/campuses/:campusId
-api.put('/:campusId', (req, res, next) => {
+// PUT /api/campuses/:campusId/edit
+api.put('/:campusId/edit', (req, res, next) => {
   const id = req.params.campusId;
 
   Campus.findById(id)

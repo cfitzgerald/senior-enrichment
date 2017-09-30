@@ -9,10 +9,10 @@ const Student = require('./models/Student');
 // and up here, it's the, uh, Tittleman's Crest.
 
 const campuses = [
-  { name: "Grauman's Center" },
-  { name: "Undiscovered Worlds" },
-  { name: "Sector 8" },
-  { name: "Tittleman's Crest" }
+  { name: "Grauman's Center", image: "/images/campus-orange.png" },
+  { name: "Undiscovered Worlds", image: "/images/campus-blue.png" },
+  { name: "Sector 8", image: "/images/campus-purple.png" },
+  { name: "Tittleman's Crest", image: "/images/campus-yellow.png" }
 ];
 
 const students = [
