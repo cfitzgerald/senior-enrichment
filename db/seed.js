@@ -1,4 +1,3 @@
-// const db = require('./db');
 const Campus = require('./models/Campus');
 const Student = require('./models/Student');
 

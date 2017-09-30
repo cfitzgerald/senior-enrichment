@@ -1,4 +1,4 @@
-import React, { Component } from 'react'; // component currently unused
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import store, { fetchCampuses, fetchStudents, destroyCampus } from '../store';
 

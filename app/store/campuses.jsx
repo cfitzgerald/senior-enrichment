@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import constants from './constants';
 
 // ACTION TYPE(s)
 const GET_CAMPUS = 'GET_CAMPUS';
@@ -73,7 +72,6 @@ export function createCampus (campus) {
 }
 
 export function destroyCampus (id) {
-  // console.log('store/campuses: destroyCampus(id) =', id);
 
   return function thunk (dispatch) {
     return axios.delete(`/api/campuses/${ id }`)

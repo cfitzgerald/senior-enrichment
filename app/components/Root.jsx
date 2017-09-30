@@ -11,29 +11,7 @@ import StudentList from './StudentList';
 
 export default class Root extends Component {
 
-  // constructor() {
-  //   super();
-  //   this.state = store.getState();
-  // }
-
-  // componentDidMount() {
-  //   const campusesThunk = fetchCampuses();
-  //   const studentsThunk = fetchStudents();
-  //   store.dispatch(campusesThunk);
-  //   store.dispatch(studentsThunk);
-
-  //   this.unsubscribe = store.subscribe(() => {
-  //     this.setState(store.getState());
-  //   });
-  // }
-
-  // componentWillUnmount () {
-  //   this.unsubscribe();
-  // }
-
   render() {
-
-    // const { campuses, students } = this.state;
 
     return (
       <div className="container">

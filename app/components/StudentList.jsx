@@ -1,4 +1,4 @@
-import React, { Component } from 'react'; // component currently unused
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import store, { fetchCampuses, fetchStudents, destroyStudent } from '../store';
 
@@ -62,7 +62,7 @@ export default class StudentList extends Component {
                       <th scope="row">{ student.id }</th>
                       <td>{ student.name }</td>
                       <td>{ student.email }</td>
-                      <td>{ student.campus.name }</td>
+                      <td>{ student.campus && student.campus.name }</td>
                       <td>
                           <Link
                             className="btn btn-sm btn-outline-warning space-right"

@@ -1,5 +1,5 @@
-import React, { Component } from 'react'; // component currently unused
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+// import { Link } from 'react-router-dom';
 import store from '../store';
 
 export default class SingleCampus extends Component {
@@ -42,7 +42,7 @@ export default class SingleCampus extends Component {
       <div className="col-sm-12">
         <br />
         <div className="card">
-          <div className="card-header text-center"><h3>{ campus.name }</h3></div>
+          <h3 className="card-header text-center">{ campus.name }</h3>
 
           <div className="card-block">
 

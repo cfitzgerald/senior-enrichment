@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import store, { addStudent, createStudent, fetchStudents } from '../store';
+import { Redirect } from 'react-router';
+import store, { addStudent, createStudent } from '../store';
 
 export default class StudentForm extends Component {
 
@@ -40,7 +41,7 @@ export default class StudentForm extends Component {
   render() {
 
     const { handleChange, handleSubmit } = this;
-    const { name, email, campusId, students, campuses } = this.state;
+    const { name, email, campusId, campuses } = this.state;
 
     return (
       <div className="col-sm-12">

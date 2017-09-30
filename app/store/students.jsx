@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import constants from './constants';
 
 // ACTION TYPE(s)
 const GET_STUDENT = 'GET_STUDENT';
@@ -90,11 +89,10 @@ export function createStudent (student) {
 }
 
 export function destroyStudent (id) {
-  // console.log('store/students: destroyStudent(id) =', id);
 
   return function thunk (dispatch) {
     return axios.delete(`/api/students/${ id }`)
-      .then(() => { // getting a 204
+      .then(() => {
         const action = deleteStudent(id);
         dispatch(action);
       });

@@ -1,5 +1,3 @@
-'use strict';
-
 const Campus = require('./Campus');
 const Student = require('./Student');
 
