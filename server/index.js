@@ -8,7 +8,11 @@ const app = express();
 module.exports = app;
 
 // logging middleware
-app.use(morgan('dev'));
+if (process.env.NODE_ENV !== 'production') {
+  // Logging middleware (non-production only)
+  app.use(require('morgan'));
+}
+// app.use(morgan('dev'));
 
 // static middleware
 app.use(express.static(path.join(__dirname, '..', 'node_modules')));
