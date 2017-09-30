@@ -1,6 +1,6 @@
 {
   "name": "sep",
-  "version": "0.8.0",
+  "version": "0.0.1",
   "description": "Senior Enrichment Project for Colin FitzGerald",
   "main": "index.js",
   "scripts": {
