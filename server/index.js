@@ -10,7 +10,7 @@ module.exports = app;
 // logging middleware
 if (process.env.NODE_ENV !== 'production') {
   // Logging middleware (non-production only)
-  app.use(require('morgan'));
+  app.use(morgan('dev'));
 }
 // app.use(morgan('dev'));
 
