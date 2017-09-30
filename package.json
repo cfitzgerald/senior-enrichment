@@ -9,7 +9,7 @@
     "postinstall": "npm run webpack",
     "seed": "node seed.js",
     "start:dev": "npm run build -- -w & nodemon --ignore public/ --ignore components/ server/index.js",
-    "start": "node server/index.js",
+    "start": "node server/index.js"
   },
   "keywords": [
     "react",
