@@ -4,15 +4,16 @@ import store, { fetchCampuses, fetchStudents } from '../store';
 
 import CampusForm from './CampusForm';
 import CampusList from './CampusList';
-import SingleCampus from './SingleCampus';
 import Navbar from './Navbar';
+import SingleCampus from './SingleCampus';
+import SingleStudent from './SingleStudent';
 import StudentForm from './StudentForm';
 import StudentList from './StudentList';
+import Summary from './Summary';
 
 export default class Root extends Component {
 
   render() {
-
     return (
       <div className="container">
 
@@ -27,9 +28,10 @@ export default class Root extends Component {
             <Route exact path="/students" component={ StudentList } />
             <Route exact path="/new-campus" component={ CampusForm } />
             <Route exact path="/new-student" component={ StudentForm } />
-            <Route exact path="/campuses/:campusId/view" component={ SingleCampus } />
-            <Route exact path="/students/:studentId" component={ StudentForm } />
-            <Redirect to="/campuses" />
+            <Route path="/campuses/:campusId/view" component={ SingleCampus } />
+            <Route path="/students/:studentId/view" component={ SingleStudent } />
+            <Route path="/students/:studentId/edit" component={ StudentForm } />
+            <Route exact path="/" component={ Summary } />
           </Switch>
         </div>
 

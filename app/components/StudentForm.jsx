@@ -42,6 +42,8 @@ export default class StudentForm extends Component {
 
     const { handleChange, handleSubmit } = this;
     const { name, email, campusId, campuses } = this.state;
+    console.log('StudentForm: this.props = ', this.props);
+    // Number(this.props.match.params.studentId)
 
     return (
       <div className="col-sm-12">
@@ -90,13 +92,13 @@ export default class StudentForm extends Component {
                   value={ campusId }
                 >
                   <option value="">-- none --</option>
-                    {
-                      campuses.map(campus => {
-                        return (
-                          <option key={ campus.id } value={ campus.id }>{ campus.name }</option>
-                        );
-                      })
-                    }
+                  {
+                    campuses.map(campus => {
+                      return (
+                        <option key={ campus.id } value={ campus.id }>{ campus.name }</option>
+                      );
+                    })
+                  }
                 </select>
               </div>
 

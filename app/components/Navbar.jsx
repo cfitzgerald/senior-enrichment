@@ -18,6 +18,13 @@ export default function Navbar () {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
 
+        <li className="nav-item">
+          <NavLink
+            className="nav-link"
+            to="/"
+            activeClassName="active">Home</NavLink>
+        </li>
+
           <li className="nav-item">
             <NavLink
               className="nav-link"

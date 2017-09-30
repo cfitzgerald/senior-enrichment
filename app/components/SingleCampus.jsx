@@ -43,7 +43,6 @@ export default class SingleCampus extends Component {
         <br />
         <div className="card">
           <h3 className="card-header text-center">{ campus.name }</h3>
-
           <div className="card-block">
 
             <table className="table table-striped">
@@ -78,7 +77,6 @@ export default class SingleCampus extends Component {
             </table>
 
           </div>
-
         </div>
       </div>
     );

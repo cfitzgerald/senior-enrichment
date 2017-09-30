@@ -15,22 +15,22 @@ const campuses = [
 ];
 
 const students = [
-  { name: "Uncle Steve", email: "01@rm.com", campusId: 1 },
-  { name: "Cousin Nicky", email: "02@rm.com", campusId: 2 },
-  { name: "Mr. Beauregard", email: "03@rm.com", campusId: 3 },
-  { name: "Frankenstein's Monster", email: "04@rm.com", campusId: 4 },
-  { name: "Sleepy Gary", email: "05@rm.com", campusId: 1 },
-  { name: "Photography Raptor", email: "06@rm.com", campusId: 2 },
-  { name: "Pencilvester", email: "07@rm.com", campusId: 3 },
-  { name: "Tinkles", email: "08@rm.com", campusId: 4 },
-  { name: "Hamurai", email: "09@rm.com", campusId: 1 },
-  { name: "Amish Cyborg", email: "10@rm.com", campusId: 2 },
-  { name: "Reverse Giraffe", email: "11@rm.com", campusId: 3 },
-  { name: "Baby Wizard", email: "12@rm.com", campusId: 4 },
-  { name: "Mrs. Refrigerator", email: "13@rm.com", campusId: 1 },
-  { name: "William Shakespeare", email: "14@rm.com", campusId: 2 },
-  { name: "Cleopatra", email: "15@rm.com", campusId: 3 },
-  { name: "Bigfoot", email: "16@rm.com", campusId: 4 },
+  { name: "Uncle Steve", email: "01@mhiaj.edu", campusId: 1 },
+  { name: "Cousin Nicky", email: "02@mhiaj.edu", campusId: 2 },
+  { name: "Mr. Beauregard", email: "03@mhiaj.edu", campusId: 3 },
+  { name: "Frankenstein's Monster", email: "04@mhiaj.edu", campusId: 4 },
+  { name: "Sleepy Gary", email: "05@mhiaj.edu", campusId: 1 },
+  { name: "Photography Raptor", email: "06@mhiaj.edu", campusId: 2 },
+  { name: "Pencilvester", email: "07@mhiaj.edu", campusId: 3 },
+  { name: "Tinkles", email: "08@mhiaj.edu", campusId: 4 },
+  { name: "Hamurai", email: "09@mhiaj.edu", campusId: 1 },
+  { name: "Amish Cyborg", email: "10@mhiaj.edu", campusId: 2 },
+  { name: "Reverse Giraffe", email: "11@mhiaj.edu", campusId: 3 },
+  { name: "Baby Wizard", email: "12@mhiaj.edu", campusId: 4 },
+  { name: "Mrs. Refrigerator", email: "13@mhiaj.edu", campusId: 1 },
+  { name: "William Shakespeare", email: "14@mhiaj.edu", campusId: 2 },
+  { name: "Cleopatra", email: "15@mhiaj.edu", campusId: 3 },
+  { name: "Bigfoot", email: "16@mhiaj.edu", campusId: 4 },
 ];
 
 const seed = () => {

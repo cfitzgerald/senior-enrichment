@@ -64,13 +64,16 @@ export default class StudentList extends Component {
                       <td>{ student.email }</td>
                       <td>{ student.campus && student.campus.name }</td>
                       <td>
-                          <Link
-                            className="btn btn-sm btn-outline-warning space-right"
-                            to={ `/students/${ student.id }/edit` }>Edit</Link>
+                        <Link
+                          className="btn btn-sm btn-outline-success space-right"
+                          to={ `/students/${ student.id }/view` }>View</Link>
+                        <Link
+                          className="btn btn-sm btn-outline-warning space-right"
+                          to={ `/students/${ student.id }/edit` }>Edit</Link>
 
-                          <button
-                            className="btn btn-sm btn-danger"
-                            onClick={ (e) => handleClick(e, student.id) }>Delete</button>
+                        <button
+                          className="btn btn-sm btn-danger"
+                          onClick={ (e) => handleClick(e, student.id) }>Delete</button>
                       </td>
                     </tr>
                   );
