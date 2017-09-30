@@ -4,12 +4,11 @@
   "description": "Senior Enrichment Project for Colin FitzGerald",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "build-watch": "webpack -w",
     "postinstall": "npm run webpack",
     "seed": "node seed.js",
     "start:dev": "npm run build -- -w & nodemon --ignore public/ --ignore components/ server/index.js",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "webpack": "./node_modules/webpack/bin/webpack.js"
   },
   "keywords": [
     "react",
