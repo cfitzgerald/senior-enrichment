@@ -42,7 +42,7 @@ export default class SingleCampus extends Component {
       <div className="col-sm-12">
         <br />
         <div className="card">
-          <div className="card-header text-center"><h3>{ campus && campus.name }</h3></div>
+          <div className="card-header text-center"><h3>{ campus.name }</h3></div>
 
           <div className="card-block">
 

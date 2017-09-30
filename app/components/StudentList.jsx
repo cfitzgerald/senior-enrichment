@@ -26,15 +26,14 @@ export default class StudentList extends Component {
   }
 
   handleClick(e, studentId) {
-    e.preventDefault(); // hacky workaround(?) for delete button vs. link
-    // console.log('StudentList: handleClick(e, studentId) =', studentId);
+    e.preventDefault();
     store.dispatch(destroyStudent(studentId));
     // store.dispatch(fetchStudents());
   }
 
   render() {
 
-    const { campuses, students } = this.state;
+    const { students } = this.state;
     const { handleClick } = this;
 
     return (

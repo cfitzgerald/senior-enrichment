@@ -26,8 +26,7 @@ export default class CampusList extends Component {
   }
 
   handleClick(e, campusId) {
-    e.preventDefault(); // hacky workaround(?) for delete button vs. link
-    // console.log('StudentList: handleClick(e, studentId) =', studentId);
+    e.preventDefault();
     store.dispatch(destroyCampus(campusId));
     // store.dispatch(fetchCampuses());
   }
