@@ -1,4 +1,3 @@
-// FROM: acme-product-categories-react
 import React, { Component } from 'react';
 import store, { fetchCampuses, fetchStudents } from '../store';
 
@@ -25,41 +24,12 @@ export default class Summary extends Component {
   }
 
   render() {
-    // destructure from this.state
     console.log('Summary: this.state = ', this.state);
     const { campuses, students } = this.state;
 
-    // 1a. number of campuses: { canmpuses.length }
-    // 1b. number of students: { students.length }
-
-    // 2. list of students without a campus
     const noCampus = students.filter(student => {
       return !student.campus;
     });
-
-    // 3.1 most expensive product: { product.name } and { product.price }
-    // ...could have multiple most expensive products (re: acme products)
-    // const maxPrice = products.reduce((prev, current) => {
-    //   return (current.price > prev) ? current.price : prev;
-    // }, 0);
-
-    // const mostExpensive = products.filter(product => {
-    //   return product.price === maxPrice;
-    // });
-
-    // // 3.2 least expensive product: { product.name } and { product.price }
-    // const minPrice = products.reduce((prev, current) => {
-    //   return (current.price <= prev) ? current.price : prev;
-    // }, maxPrice);
-
-    // const leastExpensive = products.filter(product => {
-    //   return product.price === minPrice;
-    // });
-
-    // // 4. out of stock products
-    // const outOfStock = products.filter(product => {
-    //   return !product.inStock;
-    // });
 
     return (
 
@@ -85,6 +55,8 @@ export default class Summary extends Component {
                   <li>No campus for <strong>{ noCampus.length }</strong> student(s).</li>
                 </ul>
               </li>
+
+              <li className="list-group-item"><span>There are <strong>{ students.length }</strong> students.</span></li>
 
             </ul>
 

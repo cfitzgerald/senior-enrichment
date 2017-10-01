@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import store, { fetchCampuses, fetchStudents } from '../store';
 
 import CampusForm from './CampusForm';
 import CampusList from './CampusList';
