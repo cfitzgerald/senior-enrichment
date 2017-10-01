@@ -24,7 +24,7 @@ export default class Summary extends Component {
   }
 
   render() {
-    console.log('Summary: this.state = ', this.state);
+
     const { campuses, students } = this.state;
 
     const noCampus = students.filter(student => {
@@ -33,18 +33,20 @@ export default class Summary extends Component {
 
     return (
 
-      <div className="col-sm-12">
-        <br />
-        <div className="card">
-          <h3 className="card-header text-center">Administrative Summary</h3>
-          <div className="card-block">
+      <div className="row">
 
-            <ul className="list-group">
+        <div className="col-sm-12">
+          <br />
+          <div className="card">
+            <h3 className="card-header text-center">Administrative Summary</h3>
+            <div className="card-block">
 
-              <li className="list-group-item"><span>There are <strong>{ campuses.length }</strong> campuses.</span></li>
+              <ul className="list-group">
 
-              <li className="list-group-item">Campuses:
-                <ul>
+                <li className="list-group-item"><span>There are <strong>{ campuses.length }</strong> campuses.</span></li>
+
+                <li className="list-group-item">Campuses:
+                  <ul>
                   {
                     campuses.map(campus => {
                       return (
@@ -52,18 +54,20 @@ export default class Summary extends Component {
                       );
                     })
                   }
-                  <li>No campus for <strong>{ noCampus.length }</strong> student(s).</li>
-                </ul>
-              </li>
+                    <li>No campus for <strong>{ noCampus.length }</strong> student(s).</li>
+                  </ul>
+                </li>
 
-              <li className="list-group-item"><span>There are <strong>{ students.length }</strong> students.</span></li>
+                <li className="list-group-item"><span>There are <strong>{ students.length }</strong> students.</span></li>
 
-            </ul>
+              </ul>
 
+            </div>
           </div>
         </div>
+
       </div>
+
     );
   }
-
 }

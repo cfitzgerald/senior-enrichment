@@ -32,34 +32,37 @@ export default class SingleStudent extends Component {
     const { handleClick } = this;
     const studentId = Number(this.props.match.params.studentId);
 
-    const student = students.filter(student => {
-      return student.id === studentId;
+    const student = students.filter(s => {
+      return s.id === studentId;
     })[0];
 
     return (
-      <div className="col-sm-12">
-        <br />
-        <div className="card">
-          <h3 className="card-header text-center">{ student.name }</h3>
-          <div className="card-block">
 
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Campus</th>
-                  <th>Modify</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">{ student.id }</th>
-                  <td>{ student.name }</td>
-                  <td>{ student.email }</td>
-                  <td>{ student.campus.name }</td>
-                  <td>
+      <div className="row">
+
+        <div className="col-sm-12">
+          <br />
+          <div className="card">
+            <h3 className="card-header text-center">{ student.name }</h3>
+            <div className="card-block">
+
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Campus</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">{ student.id }</th>
+                    <td>{ student.name }</td>
+                    <td>{ student.email }</td>
+                    <td>{ student.campus.name }</td>
+                    <td>
                       <Link
                         className="btn btn-sm btn-outline-warning space-right"
                         to={ `/students/${ student.id }/edit` }>Edit</Link>
@@ -67,15 +70,17 @@ export default class SingleStudent extends Component {
                       <button
                         className="btn btn-sm btn-danger"
                         onClick={ (e) => handleClick(e, student.id) }>Delete</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
 
+            </div>
           </div>
         </div>
+
       </div>
+
     );
   }
-
 }

@@ -28,7 +28,6 @@ export default class CampusList extends Component {
   handleClick(e, campusId) {
     e.preventDefault();
     store.dispatch(destroyCampus(campusId));
-    // store.dispatch(fetchCampuses());
   }
 
   render() {
@@ -37,13 +36,16 @@ export default class CampusList extends Component {
     const { handleClick } = this;
 
     return (
-      <div className="col-sm-12">
-        <br />
-        <div className="row">
+
+      <div className="row">
+
+        <div className="col-sm-12">
+          <br />
+          <div className="row">
           {
             campuses && campuses.map(campus => {
               return (
-                <div className="col-sm-6" key={ campus.id }>
+                <div key={ campus.id } className="col-sm-6">
                   <div className="card text-center">
                     <img className="card-img-top img-circle" src={ campus.image } alt="Card image cap"></img>
                     <div className="card-block">
@@ -53,9 +55,6 @@ export default class CampusList extends Component {
                         <Link
                           className="btn btn-sm btn-outline-success space-right"
                           to={ `/campuses/${ campus.id }/view` }>View</Link>
-                        <Link
-                          className="btn btn-sm btn-outline-warning space-right"
-                          to={ `/campuses/${ campus.id }/edit` }>Edit</Link>
                         <button
                           className="btn btn-sm btn-danger"
                           onClick={ (e) => handleClick(e, campus.id) }>Delete</button>
@@ -66,9 +65,11 @@ export default class CampusList extends Component {
               );
             })
           }
+          </div>
         </div>
+
       </div>
+
     );
   }
-
 }

@@ -5,12 +5,12 @@ const GET_STUDENT = 'GET_STUDENT';
 const GET_STUDENTS = 'GET_STUDENTS';
 const ADD_STUDENT = 'ADD_STUDENT';
 const DELETE_STUDENT = 'DELETE_STUDENT';
-const UPDATE_STUDENT = 'UPDATE_STUDENT';
+const MODIFY_STUDENT = 'MODIFY_STUDENT';
 // const INPUT_STUDENT_NAME = 'INPUT_STUDENT_NAME';
 // const INPUT_STUDENT_EMAIL = 'INPUT_STUDENT_EMAIL';
 // const INPUT_STUDENT_CAMPUS = 'INPUT_STUDENT_CAMPUS';
-const ADD_STUDENT_TO_CAMPUS = 'ADD_STUDENT_TO_CAMPUS';
-const REMOVE_STUDENT_FROM_CAMPUS = 'REMOVE_STUDENT_FROM_CAMPUS';
+// const ADD_STUDENT_TO_CAMPUS = 'ADD_STUDENT_TO_CAMPUS';
+// const REMOVE_STUDENT_FROM_CAMPUS = 'REMOVE_STUDENT_FROM_CAMPUS';
 
 // ACTION CREATOR(s)
 export function getStudent (student) {
@@ -33,20 +33,20 @@ export function deleteStudent (id) {
   return action;
 }
 
-export function updateStudent (student) {
-  const action = { type: UPDATE_STUDENT, student };
+export function modifyStudent (student) {
+  const action = { type: MODIFY_STUDENT, student };
   return action;
 }
 
-export function addStudentToCampus (id) {
-  const action = { type: ADD_STUDENT_TO_CAMPUS, id };
-  return action;
-}
+// export function addStudentToCampus (id) {
+//   const action = { type: ADD_STUDENT_TO_CAMPUS, id };
+//   return action;
+// }
 
-export function removeStudentFromCampus (id) {
-  const action = { type: REMOVE_STUDENT_FROM_CAMPUS, id };
-  return action;
-}
+// export function removeStudentFromCampus (id) {
+//   const action = { type: REMOVE_STUDENT_FROM_CAMPUS, id };
+//   return action;
+// }
 
 // export function inputStudentName (studentName) {
 //   const action = { type: INPUT_STUDENT_NAME, studentName };
@@ -111,6 +111,19 @@ export function destroyStudent (id) {
   };
 }
 
+export function updateStudent (student, state) {
+  console.log('updateStudent(student) = ', student, state);
+  return function thunk (dispatch) {
+    return axios.put(`/api/students/${ student.id }`, state)
+      .then(res => res.data)
+      .then(student => {
+        console.log('updateStudent => student = ', student);
+        const action = modifyStudent(student);
+        dispatch(action);
+      });
+  };
+}
+
 // REDUCER(s)
 export default function reducer (state = [], action) {
 
@@ -123,6 +136,7 @@ export default function reducer (state = [], action) {
       return action.students;
 
     case ADD_STUDENT:
+      console.log('state = ', state);
       return [...state, action.student];
 
     case DELETE_STUDENT:
@@ -130,8 +144,16 @@ export default function reducer (state = [], action) {
         return student.id !== action.id;
       });
 
-    case UPDATE_STUDENT:
-      return action.student;
+    case MODIFY_STUDENT:
+      console.log('state = ', state);
+      return [...state.filter(student => {
+        return student.id !== action.student.id;
+      }), action.student];
+      // return Object.assign({}, state, { student: action.student });
+      // return {
+      //   ...state,
+      //   student: action.student
+      // }
 
     default:
       return state;

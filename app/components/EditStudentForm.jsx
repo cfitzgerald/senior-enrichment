@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import store, { addStudent, createStudent, updateStudent } from '../store';
+import store, { updateStudent } from '../store';
 
-export default class StudentForm extends Component {
+export default class EditStudentForm extends Component {
 
   constructor() {
     super();
@@ -24,17 +24,17 @@ export default class StudentForm extends Component {
   handleChange(e) {
     const change = {};
     change[e.target.name] = e.target.value;
-    store.dispatch(addStudent(change));
+    store.dispatch(updateStudent(change));
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const newStudent = {
+    const existingStudent = {
       name: e.target.name.value,
       email: e.target.email.value,
       campusId: e.target.campusId.value,
     };
-    store.dispatch(createStudent(newStudent));
+    store.dispatch(updateStudent(existingStudent));
   }
 
   render() {
@@ -48,7 +48,7 @@ export default class StudentForm extends Component {
       <div className="col-sm-12">
         <br />
         <div className="card">
-          <h3 className="card-header text-center">New Student Entry Form</h3>
+          <h3 className="card-header text-center">Existing Student Edit Form</h3>
 
           <div className="card-block">
 

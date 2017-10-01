@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 export default function Navbar () {
 
   return (
+
     <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
 
       <button className="navbar-toggler navbar-toggler-right"
@@ -43,14 +44,15 @@ export default function Navbar () {
 
         <form className="form-inline">
           <Link
-            className="btn btn-md btn-outline-info space-right"
+            className="btn btn-md btn-secondary space-right"
             to="/new-campus">Add Campus</Link>
           <Link
-            className="btn btn-md btn-outline-info"
+            className="btn btn-md btn-secondary"
             to="/new-student">Add Student</Link>
         </form>
 
       </div>
     </nav>
+
   );
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import store, { addCampus, createCampus } from '../store';
 
-export default class CampusForm extends Component {
+export default class NewCampusForm extends Component {
 
   constructor() {
     super();

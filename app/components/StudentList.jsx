@@ -37,56 +37,60 @@ export default class StudentList extends Component {
     const { handleClick } = this;
 
     return (
-      <div className="col-sm-12">
-        <br />
-        <div className="card">
-          <h3 className="card-header text-center">Current Students</h3>
 
-          <div className="card-block">
+      <div className="row">
 
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Campus</th>
-                  <th>Modify</th>
-                </tr>
-              </thead>
-              <tbody>
-              {
-                students && students.map(student => {
-                  return (
-                    <tr key={ student.id }>
-                      <th scope="row">{ student.id }</th>
-                      <td>{ student.name }</td>
-                      <td>{ student.email }</td>
-                      <td>{ student.campus && student.campus.name }</td>
-                      <td>
-                        <Link
-                          className="btn btn-sm btn-outline-success space-right"
-                          to={ `/students/${ student.id }/view` }>View</Link>
-                        <Link
-                          className="btn btn-sm btn-outline-warning space-right"
-                          to={ `/students/${ student.id }/edit` }>Edit</Link>
+        <div className="col-sm-12">
+          <br />
+          <div className="card">
+            <h3 className="card-header text-center">Current Students</h3>
 
-                        <button
-                          className="btn btn-sm btn-danger"
-                          onClick={ (e) => handleClick(e, student.id) }>Delete</button>
-                      </td>
-                    </tr>
-                  );
-                })
-              }
-              </tbody>
-            </table>
+            <div className="card-block">
+
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Campus</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                {
+                  students && students.map(student => {
+                    return (
+                      <tr key={ student.id }>
+                        <th scope="row">{ student.id }</th>
+                        <td>{ student.name }</td>
+                        <td>{ student.email }</td>
+                        <td>{ student.campus && student.campus.name }</td>
+                        <td>
+                          <Link
+                            className="btn btn-sm btn-outline-success space-right"
+                            to={ `/students/${ student.id }/view` }>View</Link>
+                          <Link
+                            className="btn btn-sm btn-outline-warning space-right"
+                            to={ `/students/${ student.id }/edit` }>Edit</Link>
+                          <button
+                            className="btn btn-sm btn-danger"
+                            onClick={ (e) => handleClick(e, student.id) }>Delete</button>
+                        </td>
+                      </tr>
+                    );
+                  })
+                }
+                </tbody>
+              </table>
+
+            </div>
 
           </div>
-
         </div>
+
       </div>
+
     );
   }
-
 }
