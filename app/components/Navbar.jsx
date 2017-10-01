@@ -21,21 +21,21 @@ export default function Navbar () {
         <li className="nav-item">
           <NavLink
             className="nav-link"
-            to="/"
+            exact to="/"
             activeClassName="active">Home</NavLink>
         </li>
 
           <li className="nav-item">
             <NavLink
               className="nav-link"
-              to="/campuses"
+              exact to="/campuses"
               activeClassName="active">Campuses</NavLink>
           </li>
 
           <li className="nav-item">
             <NavLink
               className="nav-link"
-              to="/students"
+              exact to="/students"
               activeClassName="active">Students</NavLink>
           </li>
 
