@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import store, { addStudent, createStudent } from '../store';
+import store, { addStudent, createStudent, updateStudent } from '../store';
 
 export default class StudentForm extends Component {
 
@@ -35,7 +35,6 @@ export default class StudentForm extends Component {
       campusId: e.target.campusId.value,
     };
     store.dispatch(createStudent(newStudent));
-    // store.dispatch(fetchStudents());
   }
 
   render() {

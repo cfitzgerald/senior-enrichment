@@ -9,6 +9,8 @@ const UPDATE_STUDENT = 'UPDATE_STUDENT';
 // const INPUT_STUDENT_NAME = 'INPUT_STUDENT_NAME';
 // const INPUT_STUDENT_EMAIL = 'INPUT_STUDENT_EMAIL';
 // const INPUT_STUDENT_CAMPUS = 'INPUT_STUDENT_CAMPUS';
+const ADD_STUDENT_TO_CAMPUS = 'ADD_STUDENT_TO_CAMPUS';
+const REMOVE_STUDENT_FROM_CAMPUS = 'REMOVE_STUDENT_FROM_CAMPUS';
 
 // ACTION CREATOR(s)
 export function getStudent (student) {
@@ -33,6 +35,16 @@ export function deleteStudent (id) {
 
 export function updateStudent (student) {
   const action = { type: UPDATE_STUDENT, student };
+  return action;
+}
+
+export function addStudentToCampus (id) {
+  const action = { type: ADD_STUDENT_TO_CAMPUS, id };
+  return action;
+}
+
+export function removeStudentFromCampus (id) {
+  const action = { type: REMOVE_STUDENT_FROM_CAMPUS, id };
   return action;
 }
 
