@@ -3,10 +3,12 @@
   "version": "0.9.0",
   "description": "Senior Enrichment Project for Colin FitzGerald",
   "main": "index.js",
+  "engines": {
+    "node": "8.2.1"
+  },
   "scripts": {
     "postinstall": "npm run webpack",
-    "build": "webpack",
-    "build-watch": "webpack -w",
+    "webpack": "./node_modules/webpack/bin/webpack.js",
     "start": "node server/index.js",
     "start:dev": "npm run webpack -- -w & nodemon --ignore public/ --ignore components/ server/index.js"
   },
