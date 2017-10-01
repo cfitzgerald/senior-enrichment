@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run webpack",
-    "webpack": "./node_modules/webpack/bin/webpack.js",
+    "build": "webpack",
+    "build-watch": "webpack -w",
     "start": "node server/index.js",
     "start:dev": "npm run webpack -- -w & nodemon --ignore public/ --ignore components/ server/index.js"
   },
