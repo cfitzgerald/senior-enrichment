@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
-import store, { addStudent, createStudent, updateStudent } from '../store';
+// import { Redirect } from 'react-router';
+import store, { addStudent, createStudent } from '../store';
 
 export default class NewStudentForm extends Component {
 
@@ -41,10 +41,9 @@ export default class NewStudentForm extends Component {
 
     const { handleChange, handleSubmit } = this;
     const { name, email, campusId, campuses } = this.state;
-    console.log('StudentForm: this.props = ', this.props);
-    // Number(this.props.match.params.studentId)
 
     return (
+
       <div className="col-sm-12">
         <br />
         <div className="card">
@@ -111,7 +110,7 @@ export default class NewStudentForm extends Component {
 
         </div>
       </div>
-    );
 
+    );
   }
 }

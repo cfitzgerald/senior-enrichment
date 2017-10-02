@@ -111,10 +111,10 @@ export function destroyStudent (id) {
   };
 }
 
-export function updateStudent (student, state) {
-  console.log('updateStudent(student) = ', student, state);
+export function updateStudent (student) {
+  console.log('updateStudent(student) = ', student);
   return function thunk (dispatch) {
-    return axios.put(`/api/students/${ student.id }`, state)
+    return axios.put(`/api/students/${ student.id }`, student)
       .then(res => res.data)
       .then(student => {
         console.log('updateStudent => student = ', student);

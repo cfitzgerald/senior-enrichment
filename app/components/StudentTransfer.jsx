@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import store, { fetchStudents, updateStudent } from '../store';
+import store, { updateStudent } from '../store';
 
 export default class StudentTransfer extends Component {
 
@@ -22,11 +22,8 @@ export default class StudentTransfer extends Component {
 
   handleTransfer(e, student, campus) {
     e.preventDefault();
-    console.log('handleTransfer: campus = ', campus);
-    console.log('handleTransfer: student BEFORE = ', student);
     student.campus = campus;
-    student.campus.id = campus.id;
-    console.log('handleTransfer: student AFTER = ', student);
+    student.campusId = campus.id;
     store.dispatch(updateStudent(student));
   }
 
@@ -47,7 +44,7 @@ export default class StudentTransfer extends Component {
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th></th>
+                  <th />
                 </tr>
               </thead>
               <tbody>

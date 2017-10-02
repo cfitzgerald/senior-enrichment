@@ -24,7 +24,7 @@ export default class SingleCampus extends Component {
     e.preventDefault();
     student.campus = {};
     student.campusId = null;
-    store.dispatch(updateStudent(student, this.state.students));
+    store.dispatch(updateStudent(student));
   }
 
   render() {
@@ -33,7 +33,6 @@ export default class SingleCampus extends Component {
     const { handleRemove } = this;
     const campusId = Number(this.props.match.params.campusId);
 
-    console.log('SingleCampus: campuses = ', campuses);
     const campus = campuses.filter(c => {
       return c.id === campusId;
     })[0];
@@ -62,7 +61,7 @@ export default class SingleCampus extends Component {
                     <th>#</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th></th>
+                    <th />
                   </tr>
                 </thead>
                 <tbody>

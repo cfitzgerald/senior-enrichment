@@ -7,6 +7,4 @@
 2b. OR make separate Save and Edit forms
 3. Add/remove Students to Campuses
 4. Redirect on submit for Student and Campus save/edit Forms
-5. Add a Student view
-6. Add a Home with summary info
-7. Error handling
+5. Error handling

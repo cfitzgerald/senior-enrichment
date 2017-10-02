@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
 import store, { updateStudent } from '../store';
 
 export default class EditStudentForm extends Component {
@@ -45,6 +45,7 @@ export default class EditStudentForm extends Component {
     // Number(this.props.match.params.studentId)
 
     return (
+
       <div className="col-sm-12">
         <br />
         <div className="card">
@@ -111,7 +112,7 @@ export default class EditStudentForm extends Component {
 
         </div>
       </div>
-    );
 
+    );
   }
 }

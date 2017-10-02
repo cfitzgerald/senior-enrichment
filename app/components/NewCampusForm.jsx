@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { Redirect } from 'react-router';
 import store, { addCampus, createCampus } from '../store';
 
 export default class NewCampusForm extends Component {
@@ -35,7 +36,7 @@ export default class NewCampusForm extends Component {
   render() {
 
     const { handleChange, handleSubmit } = this;
-    const { name, students, campuses } = this.state;
+    const { name } = this.state;
 
     return (
       <div className="col-sm-12">

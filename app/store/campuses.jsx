@@ -7,8 +7,6 @@ const ADD_CAMPUS = 'ADD_CAMPUS';
 const DELETE_CAMPUS = 'DELETE_CAMPUS';
 const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
 
-
-
 // ACTION CREATOR(s)
 export function getCampus (campus) {
   const action = { type: GET_CAMPUS, campus };

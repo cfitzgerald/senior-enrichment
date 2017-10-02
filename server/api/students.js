@@ -28,8 +28,6 @@ api.post('/', (req, res, next) => {
 
 // DELETE /api/students
 api.delete('/:studentId', (req, res, next) => {
-  // console.log('DELETE /api/students REQ.PARAMS =', req.params.studentId);
-
   const id = req.params.studentId;
 
   Student.destroy({ where: { id } })
@@ -39,10 +37,13 @@ api.delete('/:studentId', (req, res, next) => {
 
 // PUT /api/students/:studentId
 api.put('/:studentId', (req, res, next) => {
-  // console.log('PUT /api/students/:studentId: req.params.studentId = ', req.params.studentId);
+  console.log('PUT /api/students/:studentId: req.params.studentId = ', req.params.studentId);
   const id = req.params.studentId;
-  // console.log('PUT /api/students/:studentId REQ.BODY =', req.body);
+  console.log('PUT /api/students/:studentId REQ.BODY =', req.body);
   Student.findById(id)
-    .then(student => student.update(req.body))
+    .then(student => {
+      student.update(req.body);
+      res.send(student);
+    })
     .catch(next);
 });
