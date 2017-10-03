@@ -40,9 +40,12 @@ export default class EditStudentForm extends Component {
   render() {
 
     const { handleChange, handleSubmit } = this;
-    const { name, email, campusId, campuses } = this.state;
-    console.log('StudentForm: this.props = ', this.props);
-    // Number(this.props.match.params.studentId)
+    const { name, email, campusId, campuses, students } = this.state;
+    const studentId = Number(this.props.match.params.studentId);
+
+    const student = students.filter(s => {
+      return s.id === studentId;
+    })[0];
 
     return (
 
@@ -65,7 +68,7 @@ export default class EditStudentForm extends Component {
                   className="form-control"
                   onChange={ handleChange }
                   name="name"
-                  placeholder="..."
+                  placeholder={ student && student.name || '...' }
                   type="text"
                   value={ name }
                 />
@@ -77,7 +80,7 @@ export default class EditStudentForm extends Component {
                   className="form-control"
                   name="email"
                   onChange={ handleChange }
-                  placeholder="..."
+                  placeholder={ student && student.email || '...' }
                   type="text"
                   value={ email }
                 />
@@ -89,7 +92,7 @@ export default class EditStudentForm extends Component {
                   className="form-control"
                   name="campusId"
                   onChange={ handleChange }
-                  value={ campusId }
+                  value={ student && student.campus.id || '...' }
                 >
                   <option value="">-- none --</option>
                   {
